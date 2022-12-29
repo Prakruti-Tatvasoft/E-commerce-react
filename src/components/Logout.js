@@ -10,7 +10,7 @@ const Logout = () => {
     useEffect(() => {
         dispatch(logOut())
         localStorage.clear()
-        navigate('/')
+        navigate('/', {clearPreviousHistory: true})
     }, [])
   return null
 }
