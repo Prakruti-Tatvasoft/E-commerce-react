@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Card, CardActions, CardContent, CardMedia, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material'
+import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllCartProducts, getAllProducts, productAddToCart, searchProduct, searchWithFilter } from '../redux/actions'
+import { getAllCartProducts, getAllProducts, productAddToCart, searchWithFilter } from '../redux/actions'
 import { Link } from 'react-router-dom'
 
 const GetProducts = () => {
@@ -24,7 +24,7 @@ const GetProducts = () => {
 
     const handleChange = (e) => {
         setSearch(e.target.value)
-        setTimeout(() => dispatch(searchWithFilter({ title: search, category: filter })), 1000)
+        dispatch(searchWithFilter({ title: search, category: filter }))
     }
 
     const handleFilterChange = (e) => {
@@ -62,7 +62,6 @@ const GetProducts = () => {
                 {products.map((p) => {
                     return (
                         <div className="col-md-3 " key={p._id}>
-
                             <Card sx={{ maxWidth: 345, minHeight: 400, height: '100%', marginBottom: 5 }}>
                                 <Link to={`/product/${p._id}`} style={{ textDecoration: 'none' }}>
                                     <CardMedia
@@ -70,7 +69,6 @@ const GetProducts = () => {
                                         image={p.image}
                                     />
                                 </Link>
-
                                 <CardContent>
                                     <Typography gutterBottom sx={{ fontSize: 19 }} component="div">
                                         {p.title}

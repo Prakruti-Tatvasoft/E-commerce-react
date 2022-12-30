@@ -5,7 +5,7 @@ import { getProductInDetail } from '../redux/actions'
 
 const ProductDetail = () => {
     const { id } = useParams()
-    
+
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getProductInDetail(id))
@@ -19,12 +19,11 @@ const ProductDetail = () => {
                     <img src={product.image} alt='product' height='400' width='400' />
                 </div>
                 <div className='col-md-6'>
-                <br /> 
-                <h6>{ product.title}</h6>
-                <h6>{product.description}</h6>
-                <h6>{product.price} $</h6>
+                    <br />
+                    <h6>{product.title}</h6>
+                    <h6>{product.description}</h6>
+                    <h6>{product.price} $</h6>
                 </div>
-                
             </div>
         </div>
     )

@@ -5,5 +5,3 @@ export const GET_PRODUCT_DETAIL = 'GET_PRODUCT_DETAIL'
 export const SAVE_MEMBER = 'SAVE_MEMBER'
 export const LOGIN = 'LOGIN'
 export const LOGOUT = 'LOGOUT'
-
-

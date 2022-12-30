@@ -79,17 +79,18 @@ const getProductInDetail = (productId) => {
 const searchWithFilter = ({ title, category }) => {
     return async (dispatch) => {
         try {
-            let url = ''
-            if(title && !category) {
-                url +=`title=${title}`
+            let parameters = {}
+            if(category) {
+                parameters = { ...parameters, category}
             }
-            if(category && !title) {
-                url += `category=${category}`
+
+            if(title) {
+                parameters = { ...parameters, title}
             }
-            if(title && category) {
-                url = `title=${title}&category=${category}`
-            }
-            const res = await axiosWrapper.get(`/products?${url}`)
+
+            const res = await axiosWrapper.get('/products', {
+                params: parameters
+            })
             dispatch({
                 type: GET_PRODUCTS,
                 payload: res.data

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material'
+import { Button } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllCartProducts, productRemoveFromCart, RemoveAllProductsFromCart } from '../redux/actions'
 import { Link } from 'react-router-dom'
@@ -34,7 +34,7 @@ const Cart = () => {
             <div className='container'>
                 <div className="row">
                     {
-                        cartList.length !== 0
+                        cartList.length > 0
                             ?
                             <>
                                 {products.map((p) => {
@@ -52,9 +52,9 @@ const Cart = () => {
                                                         </div>
                                                     <div className="col-md-8">
                                                         <div className="card-body">
-                                                            <p className="card-text">{p.title}</p>
-                                                            <p className="card-text">{p.description.slice(0, 70)}...</p>
-                                                            <p className="card-text">{p.price} $</p>
+                                                            <p className="card-text">{p?.title}</p>
+                                                            <p className="card-text">{p?.description?.slice(0, 70)}...</p>
+                                                            <p className="card-text">{p?.price} $</p>
                                                             <Button variant='contained' onClick={() => handleRemove(p._id)}>Remove item</Button>
                                                         </div>
                                                     </div>
