@@ -1,5 +1,5 @@
 import { useFormik } from 'formik'
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { getAllCartProducts, userLogin } from '../redux/actions'
@@ -29,7 +29,12 @@ const Login = () => {
         }
     });
 
-    const { user } = useSelector(state => state.member)
+    const { user, status } = useSelector(state => state.member)
+    
+    let message = ''
+    if(status === 400) {
+        message  = 'Invalid credentials'
+    }
     if (user) {
         navigate('/home')
     }
@@ -38,6 +43,7 @@ const Login = () => {
         <div className="container">
             <div className="row">
                 <div className="col-md-6">
+                    { message}
                     <h2 className="mb-3">Login</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">

@@ -127,9 +127,14 @@ const userLogin = (user) => {
             const res = await axiosWrapper.post('/login', {
                 ...user
             })
-            dispatch({ type: SAVE_MEMBER, payload: res.data })
+            const authRes = {
+                ...res.data,
+                status: res.status
+            }
+            dispatch({ type: SAVE_MEMBER, payload: authRes })
             localStorage.setItem('token', res.data.token)
         } catch (error) {
+            dispatch({ type: SAVE_MEMBER, payload: { status: 400 } })
             throw error
         }
     }
