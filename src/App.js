@@ -10,6 +10,7 @@ import ProductDetail from "./components/ProductDetail";
 import Signup from "./components/Signup";
 import { store, persistor } from './redux/store'
 
+
 function App() {
   return (
     <Provider store={store}>
